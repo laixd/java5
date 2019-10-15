@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add New Users</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="@{/webjars/font-awesome/5.6.3/js/all.min.js}">
+
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+
+</head>
+<body>
+<div th:replace="fragments/header::header">Header</div>
+<br>
+	<div class="container">
+		<div class="card-header" style="background-color: #e3f2fd;">
+			<h4><i class='fas fa-home' style='font-size: 30px'></i> Sign in</h4>
+			
+		</div>
+		<form th:object="${usersModel}" method="post" th:action="@{/users/addUsers}">
+
+				<div class="form-group">
+					<label for="username">Username:</label>
+					 <input type="text" th:field="*{username}"
+						class="form-control" id="exampleFormControlInput1">
+						<small th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}">Username Error</small>
+						</div>
+						
+						<div class="form-group">
+					 <label for="username">Password:</label>
+					<input type="password" th:field="*{password}" class="form-control"
+						id="exampleFormControlInput1">
+						<small th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}">password Error</small>
+						</div>
+						
+						<div class="form-group">
+					 <label for="username">Fullname: </label>
+					 <input
+						type="text" th:field="*{fullname}" class="form-control"
+						id="exampleFormControlInput1">
+						<small th:if="${#fields.hasErrors('fullname')}" class="text-danger" th:errors="*{fullname}">Quantity Error</small>
+						</div>
+						
+					
+				<input type="submit" value="Add New" class="btn btn-primary">
+			
+		</form><br>
+		<a th:href="${'/users'}">List All Users</a>
+
+	</div>
+	<div th:replace="fragments/footer::footer"></div>
+		<script th:src=" @{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+</body>
+</html>

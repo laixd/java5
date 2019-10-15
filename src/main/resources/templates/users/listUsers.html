@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List Users</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="@{/webjars/font-awesome/5.6.3/js/all.min.js}">
+
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+
+</head>
+<body>
+<div th:replace="fragments/header::header">Header</div><br>
+	<div class="container">
+	
+		<div class="card-header" style="background-color: #e3f2fd;">
+			<h4>
+				<i class='fas fa-home' style='font-size: 30px'></i> List Users
+			</h4>
+		</div>
+		<br> <br>
+		<table class="table table-striped">
+			<thead class="thead-inverse">
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Fullname</th>
+					<th>&nbsp;Function</th>
+				</tr>
+			</thead>
+			<tr th:each="users: ${usersModel}">
+				<td th:text="${users.username}"></td>
+				<td th:text="${users.password}"></td>
+				<td th:text="${users.fullname}"></td>
+				<td><a th:href="${'/users/editUsers/' +users.username}"
+					class="btn btn-primary"><i class='fas fa-edit' style='font-size:24px'></i>Edit
+				</a> <a th:href="${'/users/delete/' +users.username}"
+					class="btn btn-danger">Delete</a>
+			</tr>
+		</table>
+<a th:href="${'/users/addUsers'}">Add New User</a>
+		
+	</div>
+	<script th:src=" @{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+	<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>

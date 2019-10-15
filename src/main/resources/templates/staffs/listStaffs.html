@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List Staffs</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="@{/webjars/font-awesome/5.6.3/js/all.min.js}">
+
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+
+</head>
+<body>
+	<div th:replace="fragments/header::header">Header</div>
+	<div class="container">
+		<br>
+
+		<div class="card-header" style="background-color: #e3f2fd;">
+			<h4>
+				<i class='fas fa-home' style='font-size: 30px'></i> List Staffs
+			</h4>
+		</div>
+		<br> <br>
+		<table class="table table-striped">
+			<thead class="thead-inverse">
+				<tr>
+					<th>StaffsID</th>
+					<th>StaffsName</th>
+					<th>Gender</th>
+					<th>Birthday</th>
+					<th>Photo</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Salary</th>
+					<th>Notes</th>
+					<th>DepartsID</th>
+					<th>&nbsp;Function</th>
+				</tr>
+			</thead>
+			<tr th:each="staff: ${staffsModel}">
+				<td th:text="${staff.staffsID}"></td>
+				<td th:text="${staff.staffsName}"></td>
+				<td th:text="${staff.gender}==true?'Male':'FeMale'"></td>
+				<td th:text="${staff.birthday}"></td>
+				<td><img class="form-control"
+					th:src="@{'data:image/jpg;base64,'+${staff.getImage(staff.photo)}}"
+					style="width: 100px; height: 100px;">
+				<td th:text="${staff.email}"></td>
+				<td th:text="${staff.phone}"></td>
+				<td th:text="${staff.salary}"></td>
+				<td th:text="${staff.notes}"></td>
+				<td th:text="${staff.departID.departsName}"></td>
+
+
+				<td><a th:href="${'/staffs/editStaffs/' +staff.staffsID}"
+					class="btn btn-primary"><i class='fas fa-edit'
+						style='font-size: 24px'></i>Edit </a> <a
+					th:href="${'/staffs/delete/' +staff.staffsID}"
+					class="btn btn-danger">Delete</a>
+			</tr>
+		</table>
+		<a th:href="${'/staffs/addStaffs'}">Add New Staffs</a>
+
+	</div>
+	<script th:src=" @{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+	<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>

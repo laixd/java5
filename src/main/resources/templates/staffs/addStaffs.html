@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add New Staffs</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="@{/webjars/font-awesome/5.6.3/js/all.min.js}">
+
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+
+</head>
+<body>
+	<div th:replace="fragments/header::header">Header</div>
+	<br>
+	<div class="container">
+		<div class="card-header" style="background-color: #e3f2fd;">
+			<h4>
+				<i class='fas fa-home' style='font-size: 30px'></i> Add New Staff
+			</h4>
+
+		</div>
+		<form th:object="${staffsModel}" th:action="@{/staffs/addStaffs}"
+			enctype="multipart/form-data" method="post">
+
+			<div class="form-group">
+				<label for="username">StaffsID:</label> <input type="text"
+					th:field="*{staffsID}" class="form-control" required> <small
+					th:if="${#fields.hasErrors('staffsID')}" class="text-danger"
+					th:errors="*{staffsID}">staffsID Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">StaffsName:</label> <input type="text"
+					th:field="*{staffsName}" class="form-control" required> <small
+					th:if="${#fields.hasErrors('staffsName')}" class="text-danger"
+					th:errors="*{staffsName}">staffsName Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">Gender: </label>
+				&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Male&emsp14;&emsp14;<input
+					type="radio" name="aa" th:value="${true}" required>&emsp14;&emsp14;&emsp14;&emsp14;FeMale&emsp14;&emsp14;&emsp14;&emsp14;<input
+					type="radio" name="aa">
+			</div>
+
+			<div class="form-group">
+				<label for="username">Birthday:</label> <input type="date"
+					class="form-control" name="txtBirthday" required>
+
+			</div>
+
+			<div class="form-group">
+				<label for="username">Photo:</label><br> <input type="file"
+					name="txtImage">
+			</div>
+
+			<div class="form-group">
+				<label for="username">Email:</label> <input type="text"
+					th:field="*{email}" class="form-control" required> <small
+					th:if="${#fields.hasErrors('email')}" class="text-danger"
+					th:errors="*{email}">email Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">Phone:</label> <input type="text"
+					th:field="*{phone}" class="form-control" required> <small
+					th:if="${#fields.hasErrors('phone')}" class="text-danger"
+					th:errors="*{phone}">phone Error</small>
+			</div>
+			
+			<div class="form-group">
+				<label for="username">Salary:</label> <input type="text"
+					th:field="*{salary}" class="form-control" required> <small
+					th:if="${#fields.hasErrors('salary')}" class="text-danger"
+					th:errors="*{salary}">salary Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">Notes:</label> <input type="text"
+					th:field="*{notes}" class="form-control"> <small
+					th:if="${#fields.hasErrors('notes')}" class="text-danger"
+					th:errors="*{notes}">notes Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">DepartID:</label> <select
+					class="form-control" name="cbodepartID">
+					<option th:each="depart : ${listDepart}"
+						th:text="${depart.departsName}" th:value="${depart.departID}">
+					</option>
+				</select>
+
+			</div>
+			<h5 class="text-danger" th:text="${message}"></h5>
+			<input type="submit" value="Add New" class="btn btn-primary">
+
+		</form>
+		<br> <a th:href="${'/staffs'}">List All Staffs</a>
+	</div>
+	<div th:replace="fragments/footer::footer"></div>
+	<script th:src=" @{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+</body>
+</html>

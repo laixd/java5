@@ -1,0 +1,72 @@
+
+.ul>li>a{
+        text-transform: uppercase;
+        color:#039 ;
+    } 
+	
+.ul li{
+	list-style:none;
+        position: relative;
+    } 
+.ul li a{
+        padding: 10px;
+        line-height: 20px;
+        display: inline-block;
+    } 
+ .sub-menu >li>a{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 200px;
+        background-color:#CCC;
+        padding: 5px 20px;
+		
+    }     
+.li:hover>.sub-menu{
+        display: block;
+    } 
+
+    <div class="px2 py2 sm-py5 sm-px6 mx-auto sm-mb5 border-box card "><h1 class="h3 my0">Sign in</h1><form autocomplete="off" role="form" class="simple_form mt3 sm-mt3 new_user" id="new_user" action="/" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="c3C/r3ebHriAYf6MXvic8WZAprE4bl4fkgUX72WnF2Q8MWMK0kN++N6b2Yf0uvdoVQYUPA2UBiuGdsIWFmXspg=="><div class="mb3 email required user_email"><label class="bold email required" for="user_email"><abbr title="required" class="red display-none">*</abbr> Email address</label><input class="block col-12 field string email required mb4" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email"></div><div class="mb3 password required user_password relative"><label class="bold password required" for="user_password"><abbr title="required" class="red display-none">*</abbr> Password</label><input class="block col-12 field password required" required="required" aria-required="true" type="password" name="user[password]" id="user_password">
+        <div class="top-n24 right-0 absolute">
+          <label class="btn-border" for="pw-toggle-0">
+            <div class="checkbox">
+              <input id="pw-toggle-0" type="checkbox">
+              <span class="indicator"></span>
+              Show password
+            </div>
+          </label>
+        </div></div><div class="mb3 hidden user_request_id"><input class="block col-12 field hidden" type="hidden" name="user[request_id]" id="user_request_id"></div><div><input type="submit" name="commit" value="Next" class="btn btn-primary sm-col-6 col-12 btn-wide mb3" data-disable-with="Next"></div></form><p class="my3"><a target="_blank" href="https://www.login.gov/policy">Security Practices and Privacy Act Statement</a></p><div class="clearfix pt1 border-top"><div class="sm-col-right mxn1"><a class="px1" href="https://secure.login.gov/users/password/new">Forgot your password?</a><a class="px1 border-left border-silver" href="https://secure.login.gov/sign_up/enter_email">Create account</a></div></div></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="dropdown-menu">
+			<form class="px-4 py-3">
+				<div class="form-group">
+					<label for="exampleDropdownFormEmail1">Email address</label> <input
+						type="email" class="form-control" id="exampleDropdownFormEmail1"
+						placeholder="email@example.com">
+				</div>
+				<div class="form-group">
+					<label for="exampleDropdownFormPassword1">Password</label> <input
+						type="password" class="form-control"
+						id="exampleDropdownFormPassword1" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="dropdownCheck">
+						<label class="form-check-label" for="dropdownCheck">
+							Remember me </label>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Sign in</button>
+			</form>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="#">New around here? Sign up</a> <a
+				class="dropdown-item" href="#">Forgot password?</a>
+		</div>

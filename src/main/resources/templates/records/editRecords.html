@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Records</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="@{/webjars/font-awesome/5.6.3/js/all.min.js}">
+
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+</head>
+<body>
+	<div th:replace="fragments/header::header">Header</div>
+	<br>
+	<div class="container">
+		<div class="card-header" style="background-color: #e3f2fd;">
+			<h4>
+				<i class='fas fa-home' style='font-size: 30px'></i> Edit The Record:
+				<span th:text="${recordsID}"></span>
+			</h4>
+		</div>
+		<form th:object="${recordsModel}" th:action="@{/records/editRecords}"
+			method="post">
+			<div class="form-group">
+				<label for="username">RecordsID:</label> <input type="text"
+					th:field="*{recordsID}" readonly class="form-control"
+					id="exampleFormControlInput1"><br>
+			</div>
+
+
+			<div class="form-group">
+				<label for="username">Type: </label>
+				&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Achievements&emsp14;&emsp14;
+				<input type="radio" name="radtype" th:value="${true}" th:checked="*{type==true}" required>
+				&emsp14;&emsp14;&emsp14;&emsp14;Discipline&emsp14;&emsp14;&emsp14;&emsp14;
+				<input name="radtype" type="radio" th:value="${false}"  th:checked="*{type==false}">
+			</div>
+
+			<div class="form-group">
+				<label for="username">Reason: </label> <input type="text"
+					th:field="*{reason}" class="form-control"
+					required> <small
+					th:if="${#fields.hasErrors('reason')}" class="text-danger"
+					th:errors="*{reason}">reason Error</small>
+			</div>
+
+			<div class="form-group">
+				<label for="username">Date:</label> <input type="date"
+					class="form-control" name="txtBirthday" th:value="*{date}" required>
+			</div>
+
+			<div class="form-group">
+				<label for="username">StaffsID:</label> <select class="form-control"
+					name="cbostaffID">
+					<option th:each="staff:${listStaff}" th:text="${staff.staffsName}"
+						th:value="${staff.staffsID}"></option>
+				</select>
+			</div>
+
+
+			<input type="submit" name="Update" class="btn btn-primary">
+
+		</form>
+		<a th:href="${'/records'}">List All Records</a>
+	</div>
+	<script th:src=" @{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+	<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>
